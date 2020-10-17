@@ -72,16 +72,6 @@ WSGI_APPLICATION = 'recruitment_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'library',
-        'HOST': 'localhost',
-        'PASSWORD': 'haslo1234',
-        'USER': 'admin',
-        'PORT': 5432
-    }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -120,3 +110,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'library.User'
+
+try:
+    from recruitment_project.local_settings import DATABASES
+except ModuleNotFoundError:
+    print("local_settings.py is not configured")
+    print("configure the database settings and try again")
+    exit(0)
