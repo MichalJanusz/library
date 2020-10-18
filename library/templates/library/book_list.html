@@ -1,0 +1,64 @@
+{% extends 'library/__base__.html' %}
+
+{% block content %}
+    <div class="starter-template">
+        <h1>Book List</h1>
+        <form method="get">
+            <div class="form-row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Title" name="title">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Author" name="author">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Language" name="lang">
+                </div>
+                <div class="col">
+                    <input type="number" class="form-control" placeholder="Published after" name="after">
+                </div>
+                <div class="col">
+                    <input type="number" class="form-control" placeholder="Published before" name="before">
+                </div>
+                <div class="col">
+                    <input type="submit" class="btn btn-primary" value="Search">
+                </div>
+            </div>
+        </form>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Publication Date</th>
+                <th scope="col">ISBN</th>
+                <th scope="col">No. Pages</th>
+                <th scope="col">Cover</th>
+                <th scope="col">Publication language</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for book in books %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>{{ book.pub_date }}</td>
+                    <td>{{ book.isbn }}</td>
+                    <td>{{ book.pages }}</td>
+                    <td><a href="{{ book.cover }}"><img src="{{ book.cover }}" alt="book cover missing"></a></td>
+                    <td>{{ book.lang }}</td>
+                    <td><a href="#" class="btn btn-info" role="button">Edit</a></td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td></td>
+                    <td>there are no matching books in the library</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
