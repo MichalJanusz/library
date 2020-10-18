@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from django.views.generic import ListView
+from django.views.generic import CreateView, UpdateView
 
 from library.models import Book
 
@@ -18,3 +18,16 @@ class BookListView(View):
                                     pub_date__range=(after, before))
         return render(request, 'library/book_list.html', {'books': books})
 
+
+class BookAddView(CreateView):
+    model = Book
+    fields = '__all__'
+    template_name = 'library/book_form.html'
+    success_url = '/'
+
+
+class BookEditView(UpdateView):
+    model = Book
+    fields = '__all__'
+    template_name = 'library/book_form.html'
+    success_url = '/'
