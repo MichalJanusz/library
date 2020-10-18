@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'library',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -111,6 +112,8 @@ STATIC_URL = 'library/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'library/static')
 
 AUTH_USER_MODEL = 'library.User'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 try:
     from recruitment_project.local_settings import DATABASES
