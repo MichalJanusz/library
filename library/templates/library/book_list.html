@@ -3,10 +3,27 @@
 {% block content %}
     <div class="starter-template">
         <h1>Book List</h1>
-        <form class="form-inline">
-            <input class="form-control" type="text" name="title" placeholder="title">
-            <input class="form-control" type="text" name="author" placeholder="author">
-            <input class="form-control" type="text" name="language" placeholder="language">
+        <form method="get">
+            <div class="form-row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Title" name="title">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Author" name="author">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Language" name="lang">
+                </div>
+                <div class="col">
+                    <input type="number" class="form-control" placeholder="Published after" name="after">
+                </div>
+                <div class="col">
+                    <input type="number" class="form-control" placeholder="Published before" name="before">
+                </div>
+                <div class="col">
+                    <input type="submit" class="btn btn-primary" value="Search">
+                </div>
+            </div>
         </form>
         <table class="table">
             <thead>
@@ -19,6 +36,7 @@
                 <th scope="col">No. Pages</th>
                 <th scope="col">Cover</th>
                 <th scope="col">Publication language</th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
@@ -37,7 +55,7 @@
             {% empty %}
                 <tr>
                     <td></td>
-                    <td>there are no books in the library</td>
+                    <td>there are no matching books in the library</td>
                 </tr>
             {% endfor %}
             </tbody>
