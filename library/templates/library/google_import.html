@@ -1,0 +1,50 @@
+{% extends 'library/__base__.html' %}
+
+{% block content %}
+    <h1>Search For Books</h1>
+    <div id="ajax-form">
+        <div class="form-row">
+            <div class="col">
+                <input id="ajax-title" class="form-control" placeholder="Title">
+            </div>
+            <div class="col">
+                <input id="ajax-author" class="form-control" placeholder="Author">
+            </div>
+            <div class="col">
+                <input id="ajax-isbn" class="form-control" placeholder="ISBN">
+            </div>
+            <div class="col">
+                <button id="ajax-button" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+    </div>
+
+    <table class="table" id="table-results">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Publication Date</th>
+            <th scope="col">ISBN</th>
+            <th scope="col">No. Pages</th>
+            <th scope="col">Cover</th>
+            <th scope="col">Publication language</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody id="tbody-results">
+{% comment %}  <!--        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.pub_date }}</td>
+            <td>{{ book.isbn }}</td>
+            <td>{{ book.pages }}</td>
+            <td><a href="{{ book.cover }}"><img src="{{ book.cover }}" alt="book cover missing"></a></td>
+            <td>{{ book.lang }}</td>
+            <td><a href="#" class="btn btn-success" role="button">Import</a></td>
+        </tr>--> {% endcomment %}
+        </tbody>
+    </table>
+{% endblock %}

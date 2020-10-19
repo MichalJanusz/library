@@ -31,3 +31,8 @@ class BookEditView(UpdateView):
     fields = '__all__'
     template_name = 'library/book_form.html'
     success_url = '/'
+
+
+class GoogleImportView(View):
+    def get(self, request):
+        return render(request, 'library/google_import.html')
