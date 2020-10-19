@@ -15,7 +15,7 @@ class BookListView(View):
         after = int(request.GET.get('after', '') or 0)
         before = int(request.GET.get('before', '') or 9999)
         books = Book.objects.filter(title__icontains=title, author__icontains=author, lang__icontains=lang,
-                                    pub_date__range=(after, before))
+                                    pub_date__range=(after, before)).order_by('pk')
         return render(request, 'library/book_list.html', {'books': books})
 
 
