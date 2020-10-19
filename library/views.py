@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import CreateView, UpdateView
 
@@ -36,3 +36,14 @@ class BookEditView(UpdateView):
 class GoogleImportView(View):
     def get(self, request):
         return render(request, 'library/google_import.html')
+
+    def post(self, request):  # validation might be a thing to work on in the future
+        title = request.POST['title']
+        author = request.POST['author']
+        pub_date = request.POST['pub_date']
+        isbn = request.POST['isbn']
+        pages = request.POST['pages']
+        cover = request.POST['cover']
+        lang = request.POST['lang']
+        Book.objects.create(title=title, author=author, pub_date=pub_date, isbn=isbn, pages=pages, cover=cover, lang=lang)
+        return redirect('/')

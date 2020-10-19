@@ -8,7 +8,7 @@ from django.db import models
 # Create your models here.
 
 def isbn_validator(value):
-    if value not in [10, 13]:
+    if len(str(value)) not in [10, 13]:
         raise ValidationError(
             _('%(value)s is not a valid ISBN number'),
             params={'value': value},
