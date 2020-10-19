@@ -29,7 +29,7 @@ class BookQuerysetMixin(object):  # created a mixin as i used the same get_query
 class BookListView(BookQuerysetMixin, ListView):
     model = Book
     template_name = 'library/book_list.html'
-    # paginate_by = 10 ---> pagination is a problem when combined with filtration against GET attributes
+    # paginate_by = 10 ---> pagination is a problem when combined with GET filter attrs TODO: pagination
     context_object_name = 'books'
 
     def get_context_data(self, **kwargs):
@@ -65,7 +65,7 @@ class GoogleImportView(View):
     def get(self, request):
         return render(request, 'library/google_import.html')
 
-    def post(self, request):  # validation might be a thing to work on in the future
+    def post(self, request):  # validation might be a thing to work on in the future TODO: validation
         title = request.POST['title']
         author = request.POST['author']
         pub_date = request.POST['pub_date']
@@ -80,3 +80,5 @@ class GoogleImportView(View):
 
 class BookAPIView(BookQuerysetMixin, ListAPIView):
     serializer_class = BookSerializer
+
+#  TODO: fill README, make it look nice
