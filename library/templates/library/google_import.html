@@ -1,0 +1,34 @@
+{% extends 'library/__base__.html' %}
+
+{% block content %}
+    <input type="hidden" id="csrf_token" value="{{ csrf_token }}"/>
+    <h1>Search For Books</h1>
+    <div id="ajax-form">
+        <div class="form-row">
+            <div class="col">
+                <input id="ajax-search" class="form-control" placeholder="Title and/or Author">
+            </div>
+            <div class="col">
+                <button id="ajax-button" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+    </div>
+
+    <table class="table" id="table-results">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Publication Date</th>
+            <th scope="col">ISBN</th>
+            <th scope="col">No. Pages</th>
+            <th scope="col">Cover</th>
+            <th scope="col">Publication language</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody id="tbody-results">
+        </tbody>
+    </table>
+{% endblock %}
