@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from django.views.generic import CreateView, UpdateView, ListView
+from django.views.generic import CreateView, UpdateView, ListView, DeleteView
 
 from library.models import Book
 
@@ -59,6 +59,11 @@ class BookEditView(UpdateView):
     model = Book
     fields = '__all__'
     template_name = 'library/book_form.html'
+    success_url = '/'
+
+
+class BookDeleteView(DeleteView):
+    model = Book
     success_url = '/'
 
 
