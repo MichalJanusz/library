@@ -3,6 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+    <a class="btn btn-secondary" href="{% url 'list' %}">Back</a>
     <form method="post">{% csrf_token %}
         {{ form|crispy }}
     <input type="submit" class="btn btn-primary" value="Submit">
