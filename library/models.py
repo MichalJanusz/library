@@ -29,8 +29,5 @@ class Book(models.Model):
     cover = models.URLField(blank=True, max_length=500, verbose_name='Link to cover')
     lang = models.CharField(max_length=16, verbose_name='Publication language')
 
-    def get_absolute_url(self):
-        return f'/book/{self.id}'
-
     def __str__(self):
         return self.title
