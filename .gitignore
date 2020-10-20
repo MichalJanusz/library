@@ -1,4 +1,6 @@
 .idea
 __pycache__
+library/static/rest_framework
+library/static/admin
 
 local_settings.py
