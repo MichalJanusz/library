@@ -20,9 +20,10 @@ class User(AbstractUser):
 
 
 class Book(models.Model):
-    title = models.CharField(max_length=64)
-    author = models.CharField(max_length=64)
-    pub_date = models.PositiveIntegerField(default=1, validators=[MinValueValidator(1), MaxValueValidator(9999)])
+    title = models.CharField(max_length=128)
+    author = models.CharField(max_length=128)
+    pub_date = models.PositiveIntegerField(default=1, validators=[MinValueValidator(1), MaxValueValidator(9999)],
+                                           verbose_name='Publication Date')
     isbn = models.BigIntegerField(unique=True, verbose_name='ISBN',
                                   validators=[isbn_validator])
     pages = models.IntegerField(verbose_name='Number of pages')
