@@ -1,3 +1,4 @@
+from django.db import IntegrityError
 from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import CreateView, UpdateView, ListView, DeleteView
@@ -73,9 +74,12 @@ class GoogleImportView(View):
         pages = request.POST['pages']
         cover = request.POST['cover']
         lang = request.POST['lang']
-        Book.objects.create(title=title, author=author, pub_date=pub_date, isbn=isbn, pages=pages, cover=cover,
-                            lang=lang)
-        return redirect('/')
+        try:
+            Book.objects.create(title=title, author=author, pub_date=pub_date, isbn=isbn, pages=pages, cover=cover,
+                                lang=lang)
+            return redirect('/')
+        except IntegrityError as e:
+            return render(request, 'library/google_import.html', {'message': e})
 
 
 class BookAPIView(BookQuerysetMixin, ListAPIView):

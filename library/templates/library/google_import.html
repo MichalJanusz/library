@@ -3,6 +3,9 @@
 {% block content %}
     <input type="hidden" id="csrf_token" value="{{ csrf_token }}"/>
     <h1>Search For Books</h1>
+    {% if message %}
+        <div><p class="text-danger">Selected book already exists in the database please try again</p></div>
+    {% endif %}
     <div id="ajax-form">
         <div class="form-row">
             <div class="col">
