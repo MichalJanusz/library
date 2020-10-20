@@ -11,13 +11,14 @@ function googleBookSearch() {
     let results = $('#tbody-results')
     results.html('')
     console.log(`search ${search}`)
+    table.show()
 
     $.ajax({
         url: `https://www.googleapis.com/books/v1/volumes?q=${search}&maxResults=20`,
         dataType: 'json'
         })
         .done(function (data){
-            table.show()
+
             for(let i = 0; i < data.items.length; i++){
                 let imageLinks = data.items[i].volumeInfo.imageLinks
                 let thumbnail
