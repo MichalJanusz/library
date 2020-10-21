@@ -21,9 +21,9 @@ from library.views import BookListView, BookAddView, BookEditView, GoogleImportV
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', BookListView.as_view(), name='list'),
-    path('book/add', BookAddView.as_view(), name='add'),
-    path('book/edit/<int:pk>', BookEditView.as_view(), name='edit'),
+    path('book/add/', BookAddView.as_view(), name='add'),
+    path('book/edit/<int:pk>/', BookEditView.as_view(), name='edit'),
     path('import/', GoogleImportView.as_view(), name='import'),
-    path('book/delete/<int:pk>', BookDeleteView.as_view(), name='delete'),
+    path('book/delete/<int:pk>/', BookDeleteView.as_view(), name='delete'),
     path('book/api/', BookAPIView.as_view(), name='api'),
 ]
