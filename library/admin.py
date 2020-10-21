@@ -7,4 +7,4 @@ from .models import User, Book
 
 
 admin.site.register(User, UserAdmin)
-admin.site.registe(Book)
+admin.site.register(Book)
